@@ -1,0 +1,9 @@
+[package]
+name = "bevy_hashed_alpha_testing"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+bevy = { path = "../bevy", features = ["dynamic"] }
+rand = "0.8.5"
