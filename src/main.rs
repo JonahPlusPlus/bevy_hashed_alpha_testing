@@ -57,12 +57,12 @@ fn setup(
     // light
     commands.spawn_bundle(PointLightBundle {
         point_light: PointLight {
-            intensity: 1000.0,
+            intensity: 1000000.0,
             shadows_enabled: true,
-            range: 145.0, // close to sqrt(100^2 + 100^2)
+            range: 200.0,
             ..default()
         },
-        transform: Transform::from_xyz(4.0, 8.0, 4.0),
+        transform: Transform::from_xyz(50.0, 50.0, 50.0),
         ..default()
     });
 
