@@ -40,7 +40,7 @@ fn setup(
 
     let material = materials.add(StandardMaterial {
         base_color_texture: Some(texture_handle),
-        alpha_mode: AlphaMode::Blend,
+        alpha_mode: AlphaMode::Hashed,
         ..default()
     });
 
@@ -75,8 +75,11 @@ fn setup(
     }).insert(CameraTag { yaw: euler.2.to_degrees(), pitch: euler.1.to_degrees() });
 }
 
-fn transform(time: Res<Time>, mut query: Query<&mut Transform, With<BoxTag>>) {
-    let delta = time.time_since_startup().as_secs_f32().sin() / 2.0;
+fn transform(time: Res<Time>, keys: Res<Input<KeyCode>>, mut query: Query<&mut Transform, With<BoxTag>>) {
+    if keys.pressed(KeyCode::Space) {
+        return;
+    }
+    let delta = time.time_since_startup().as_secs_f32().sin() / 30.0;
     for mut transform in query.iter_mut() {
         transform.translation.x += delta;
     }
